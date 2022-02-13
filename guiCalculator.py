@@ -7,7 +7,41 @@ inputBox = Entry(root, width=35, borderwidth=5)
 
 
 def numBtn(num):
-    inputBox.insert(1, num)
+    currentVal = inputBox.get()
+    inputBox.delete(0, END)
+    inputBox.insert(0, str(currentVal) + str(num))
+
+
+def clearBtn():
+    inputBox.delete(0, END)
+
+
+def addBtn():
+    first_N = inputBox.get()
+    global fn
+    global funct
+    funct = "add"
+    fn = int(first_N)
+    inputBox.delete(0, END)
+
+
+
+def subBtn():
+    first_N = inputBox.get()
+    global fn
+    global funct
+    funct = "sub"
+    fn = int(first_N)
+    inputBox.delete(0, END)
+
+
+def btnEq():
+    second_num = inputBox.get()
+    inputBox.delete(0, END)
+    if funct == "add":
+        inputBox.insert(0, int(fn) + int(second_num))
+    elif funct == "sub":
+        inputBox.insert(0, int(fn) - int(second_num))
 
 
 btn1 = Button(root, text='1', padx=25, pady=25, command=lambda: numBtn(1))
@@ -20,10 +54,11 @@ btn7 = Button(root, text='7', padx=25, pady=25, command=lambda: numBtn(7))
 btn8 = Button(root, text='8', padx=25, pady=25, command=lambda: numBtn(8))
 btn9 = Button(root, text='9', padx=25, pady=25, command=lambda: numBtn(9))
 btn0 = Button(root, text='0', padx=25, pady=25, command=lambda: numBtn(0))
-btnAdd = Button(root, text='+', padx=25, pady=25, command=lambda: numBtn())
-btnSub = Button(root, text='-', padx=25, pady=25, command=lambda: numBtn())
-btnClr = Button(root, text='C', padx=25, pady=25, command=lambda: numBtn())
-btnEq = Button(root, text='=', padx=25, pady=25, command=lambda: numBtn())
+
+btnAdd = Button(root, text='+', padx=25, pady=25, command=addBtn)
+btnSub = Button(root, text='-', padx=25, pady=25, command=subBtn)
+btnClr = Button(root, text='C', padx=25, pady=25, command=clearBtn)
+btnEq = Button(root, text='=', padx=25, pady=25, command=btnEq)
 
 inputBox.grid(row=5, column=0, columnspan=3)
 btn1.grid(row=0, column=0)
