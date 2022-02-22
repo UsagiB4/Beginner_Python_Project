@@ -15,10 +15,6 @@ else:
     cprint('Please initialize your file to upload to github.', 'red', attrs=['reverse', 'blink'])
 
 
-
-
-
-
 #_______________________________main function here_____________________________________________
 def main():
     if len(sys.argv) == 1:
