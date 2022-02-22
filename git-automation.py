@@ -21,11 +21,11 @@ def main():
         cprint('No valid input found', 'red', attrs=['reverse', 'blink'])
         cprint('type --help or -h to get the instructions', 'blue', attrs=['reverse', 'blink'])
 
-#______________________________instruction________________________________
+
     else:
         file_name = sys.argv[1]
         git_comment = sys.argv[2]
-
+# ______________________________instruction________________________________
         if sys.argv[1] == '--help' or sys.argv[1] == '-h':
             print(sys.argv[1])
             help_text = """
@@ -52,7 +52,7 @@ def main():
                     if file_name in ignore_lists:
                         print('This file is inside .gitignore file. You can not push it to the repository.')
 
-#____________________________________ pushing file ____________________________________________________________
+#____________________________________ Executing the commands ____________________________________________________________
                     else:
                         if os.path.exists(file_path):
                             cprint('File found', 'magenta', attrs=['reverse', 'blink'])
@@ -68,12 +68,13 @@ def main():
                             git_add = f"git add {file_name}"
                             git_commit = f"git commit -m \"{new_value}\""
                             ga = shlex.split(git_add)
-                            print(ga)
-                            sub_pro = subprocess.Popen(ga, shell=True)
+
+#_____________________________ Sub-processing the arguments______________________
+                            sub_pro = subprocess.Popen(ga, shell=True)  # adding file to git
                             if sub_pro.wait() == 0:
-                                sec_pro = subprocess.Popen(git_commit, shell=True)
+                                sec_pro = subprocess.Popen(git_commit, shell=True)  # committing changes
                                 if sec_pro.wait() == 0:
-                                    subprocess.run(["git", "push"], shell=True)
+                                    subprocess.run(["git", "push"], shell=True)  # pushing file to repository
 
                         else:
                             cprint("The file doesn't exist.", 'magenta', attrs=['reverse', 'blink'])
