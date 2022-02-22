@@ -70,11 +70,9 @@ def main():
                                 i += 1
 
                             git_add = f"git add {file_name}"
-                            git_commit = f"git commit -m {new_value}"
+                            git_commit = f"git commit -m \"{new_value}\""
                             ga = shlex.split(git_add)
-                            gc = shlex.split(git_commit)
                             print(ga)
-                            print(gc)
                             sub_pro = subprocess.Popen(ga, shell=True)
                             if sub_pro.wait() == 0:
                                 sec_pro = subprocess.Popen(git_commit, shell=True)
