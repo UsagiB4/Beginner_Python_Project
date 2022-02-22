@@ -33,7 +33,7 @@ def main():
             1. If you haven't initialized your file yet, please follow the instruction form your newly created git repository and setup your folder.\n
             2. If you have your setup done. the follow the command pattern below:\n
             git-automation.py <file name> <commit.massage.here>\n
-            demo command: git-automation.py myfile.txt this is my comment
+            demo command: git-automation.py myfile.txt "this is my comment"
             3. AND DONE. it's that easy.
             """
             help_text = colored(help_text, 'blue')
