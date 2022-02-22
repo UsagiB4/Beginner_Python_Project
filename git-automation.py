@@ -2,6 +2,7 @@ from termcolor import *
 import sys
 import os
 import subprocess
+import shlex
 
 os.system('color')
 #______ Checking if the git initialization file exists_______
@@ -58,9 +59,28 @@ def main():
 #____________________________________ pushing file ____________________________________________________________
                     else:
                         if os.path.exists(file_path):
-                            print('Yes! you can push')
+                            cprint('File found', 'magenta', attrs=['reverse', 'blink'])
                             com = git_comment.split('.')
-                            print(com)
+                            com.reverse()
+                            new_value = str()
+
+                            for i in range(len(com)):
+                                value = com[i]
+                                new_value = value + " " + new_value
+                                i += 1
+
+                            git_add = f"git add {file_name}"
+                            git_commit = f"git commit -m {new_value}"
+                            ga = shlex.split(git_add)
+                            gc = shlex.split(git_commit)
+                            print(ga)
+                            print(gc)
+                            sub_pro = subprocess.Popen(ga, shell=True)
+                            if sub_pro.wait() == 0:
+                                sec_pro = subprocess.Popen(git_commit, shell=True)
+                                if sec_pro.wait() == 0:
+                                    subprocess.run(["git", "push"], shell=True)
+
                         else:
                             cprint("The file doesn't exist.", 'magenta', attrs=['reverse', 'blink'])
 
