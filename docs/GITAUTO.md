@@ -1,6 +1,6 @@
 #Git Automation:
 ****
-[Build With](http://ForTheBadge.com/images/badges/made-with-python.svg)
+![Build With](http://ForTheBadge.com/images/badges/made-with-python.svg)
 ###instruction:
 ****
 Before we start, I just want to _THANK YOU_ for visiting my project. If you like it, leaving a _`STAR`_ will motivate me
